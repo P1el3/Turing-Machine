@@ -1,0 +1,37 @@
+
+
+=======README=======
+=Piele_Mihai_Teodor=
+=======331_CB=======
+
+-> in realizarea temei, pentru a implementa o 
+abordare cat mai eficienta si non-repetitiva am ales sa:
+
+    *sa testez pe linii fiecare caz de existenta a uneia din 
+    combinarile de 1-4, adica 24 de posibilitati
+
+    *sa testez pe coloane fiecare existenta a uneia din 
+    combinarile de 1-4, adica 24 de posibilitati
+    
+    *nu am mai fost nevoit sa testez validitatea pe regiuni deoarece
+    in urma parcugerilor cuvantului, acest lucru se valideaza, deoarece
+    atat pe linii si nici pe coloane nu pot exista aceleasi numere intr-o
+    regiune deci se face automat
+
+-> modul de implementare:
+
+    *starea initiala este q0, de unde dupa citirea '*' trec in starile urmatoarea,
+    care ma ajuta sa verific fiecare posibilitate de a aparitie a formatiei 1234
+    starile sunt sugestive, iar fiecare in parte spune ce s-a citit, ex:
+        q12:3,4  (am citit pana acum 12:3 si citesc 4)
+        q12:34,4,> (trec in starea 12:34, scriu 4 si merg mai departe)
+    dupa aceasta, se va citi, pe acelasi principiu si '*', care ma va duce inapoi in starea q0
+    daca in starea q0 se citeste '_', atunci stiu ca trebuie sa trec in starea qRev
+
+    *starea qRev, aici se ajunge cand am terminat de verificat daca liniile sunt corecte,
+    daca da, qRev se intoarce la inceputul cuvantului pentru a permite inceperea verificarii pe coloane
+
+    *starea q|0, este starea initiala pentru verificarea pe coloane, principiul acesteia de functionare este
+    asemanator cu cel pentru coloane, doar ca verific elementele specifice fiecarei coloane si nu elementele
+    consecutive ca la verificarea pe linii.
+    daca q|0, citeste '_' inseamna ca verificarea atat pe linii cat si pe coloane este corecta
